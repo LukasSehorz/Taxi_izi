@@ -4,7 +4,17 @@ import { Navbar } from "@/components/Navbar";
 import { FadeIn } from "@/components/FadeIn";
 import logoAsset from "@/assets/logo.png";
 import heroAsset from "@/assets/hero-bg.png";
-import izzetPortrait from "@/assets/izzet-portrait.jpg";
+import imgFlughafen from "@/assets/service-flughafen.png";
+import imgKranken from "@/assets/service-kranken.png";
+import imgSerien from "@/assets/service-serien.png";
+import imgVorbestell from "@/assets/service-vorbestell.png";
+import imgPersonen from "@/assets/service-personen.png";
+import imgKur from "@/assets/service-kur.png";
+import imgMarktSchwaben from "@/assets/city-markt-schwaben.png";
+import imgErding from "@/assets/city-erding.png";
+import imgMuenchen from "@/assets/city-muenchen.png";
+import imgAutobahn from "@/assets/city-autobahn.png";
+import izzetPortrait from "@/assets/izzet-portrait.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -17,14 +27,16 @@ export const Route = createFileRoute("/")({
 });
 
 const services = [
-  { n: "01", title: "Stadttransfer", desc: "Komfortable Fahrten innerhalb Münchens – pünktlich, diskret und ohne Umwege." },
-  { n: "02", title: "Flughafentransfer", desc: "Verlässliche Abholung und Bringdienst zum Flughafen München zu jeder Tageszeit." },
-  { n: "03", title: "Limousinenservice", desc: "Geschäftsfahrten, Hochzeiten und besondere Anlässe – stilvoll im gepflegten Fahrzeug." },
+  { title: "Flughafentransfer", desc: "Pünktliche Abholung und Bringdienst zum Flughafen München – stressfrei und zuverlässig zu jeder Tageszeit.", img: imgFlughafen },
+  { title: "Krankenfahrten", desc: "Sichere und komfortable Fahrten zu Arzt, Klinik oder Therapie – rücksichtsvoll und auf Wunsch mit Begleitung.", img: imgKranken },
+  { title: "Serienfahrten", desc: "Regelmäßige Fahrten zu festen Terminen – verlässlich organisiert, immer der gleiche vertraute Fahrer.", img: imgSerien },
+  { title: "Vorbestellservice", desc: "Reservieren Sie Ihre Fahrt im Voraus – Ihr Wagen steht garantiert pünktlich zum vereinbarten Zeitpunkt bereit.", img: imgVorbestell },
+  { title: "Personenfahrten", desc: "Bequeme Beförderung für Einzelpersonen oder Gruppen – diskret, sicher und in gepflegten Fahrzeugen.", img: imgPersonen },
+  { title: "Kurfahrten", desc: "Komfortable Fahrten zu Kur- und Reha-Einrichtungen – entspannt und sicher ans Ziel, auch über längere Strecken.", img: imgKur },
 ];
 
 const facts = ["Lizenzierter Taxibetrieb", "Festpreise auf Anfrage", "24 Stunden erreichbar", "Gepflegte Fahrzeuge"];
 
-const cities = ["München", "Erding", "Freising", "Flughafen MUC", "Rosenheim", "Ingolstadt", "Augsburg"];
 
 const reviews = [
   { q: "Pünktlich, freundlich, absolut empfehlenswert.", who: "Michael K., München" },
@@ -89,94 +101,227 @@ function Hero() {
 
 function Leistungen() {
   return (
-    <section id="leistungen" className="bg-background py-28 md:py-40">
+    <section id="leistungen" className="relative bg-background py-28 md:py-40 overflow-hidden">
+      {/* Diagonal yellow stripes top-left */}
+      <div className="absolute top-0 left-0 w-64 h-64 overflow-hidden pointer-events-none z-10">
+        <div className="absolute bg-accent/70 h-[3px] w-48" style={{ top: "72px", left: "-20px", transform: "rotate(-35deg)" }} />
+        <div className="absolute bg-accent/50 h-[2px] w-36" style={{ top: "92px", left: "-10px", transform: "rotate(-35deg)" }} />
+        <div className="absolute bg-accent/30 h-[2px] w-24" style={{ top: "110px", left: "0px", transform: "rotate(-35deg)" }} />
+      </div>
+      {/* Diagonal yellow stripes top-right */}
+      <div className="absolute top-0 right-0 w-64 h-64 overflow-hidden pointer-events-none z-10">
+        <div className="absolute bg-accent/70 h-[3px] w-48" style={{ top: "72px", right: "-20px", transform: "rotate(35deg)" }} />
+        <div className="absolute bg-accent/50 h-[2px] w-36" style={{ top: "92px", right: "-10px", transform: "rotate(35deg)" }} />
+        <div className="absolute bg-accent/30 h-[2px] w-24" style={{ top: "110px", right: "0px", transform: "rotate(35deg)" }} />
+      </div>
       <div className="mx-auto max-w-6xl px-6 md:px-10">
         <FadeIn>
-          <p className="smallcaps text-muted-foreground mb-4">Leistungen</p>
-          <h2 className="font-display text-4xl md:text-5xl max-w-2xl mb-20">
-            Drei Wege, sicher anzukommen.
+          <p className="smallcaps text-accent text-base md:text-lg mb-4">Leistungen</p>
+          <h2 className="font-display text-4xl md:text-5xl mb-20 whitespace-nowrap">
+            Sicher ans Ziel – für jeden Anlass.
           </h2>
         </FadeIn>
-        <div>
-          {services.map((s, i) => (
-            <FadeIn key={s.n} delay={i * 100}>
-              <div className="border-l-2 border-accent pl-8 md:pl-12 py-10 md:py-14 border-b border-b-border last:border-b-0 grid md:grid-cols-12 gap-6 items-baseline">
-                <div className="md:col-span-2 smallcaps text-muted-foreground">{s.n}</div>
-                <h3 className="md:col-span-5 font-display text-3xl md:text-4xl">{s.title}</h3>
-                <p className="md:col-span-5 text-sm md:text-base text-muted-foreground leading-relaxed">{s.desc}</p>
-              </div>
-            </FadeIn>
-          ))}
+        <div className="grid grid-cols-3 gap-2">
+          {services.map((s, i) => {
+            const wide = i === 0 || i === 3 || i === 5;
+            return (
+              <FadeIn key={s.title} delay={(i % 3) * 80} className={wide ? "col-span-2" : "col-span-1"}>
+                <div className="group relative overflow-hidden cursor-default" style={{ height: wide ? "420px" : "420px" }}>
+                  <img
+                    src={s.img}
+                    alt={s.title}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                  {/* Number */}
+                  <span className="absolute top-6 right-6 font-display text-5xl font-bold text-accent/70 leading-none select-none">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  {/* Accent line */}
+                  <div className="absolute bottom-0 left-0 h-[2px] w-10 bg-accent transition-all duration-500 group-hover:w-full" />
+                  {/* Text */}
+                  <div className="absolute bottom-0 left-0 right-0 p-8">
+                    <h3 className="font-display text-2xl md:text-3xl mb-2 text-white">{s.title}</h3>
+                    <p className="text-sm text-white/65 leading-relaxed max-w-sm">{s.desc}</p>
+                  </div>
+                </div>
+              </FadeIn>
+            );
+          })}
         </div>
       </div>
     </section>
   );
 }
 
+const warumStats = [
+  { num: "24/7", desc: "Erreichbar – Tag und Nacht, immer ein persönlicher Ansprechpartner" },
+  { num: "100%", desc: "Festpreise auf Anfrage – transparent, ohne versteckte Kosten" },
+  { num: "0", desc: "Callcenter – Sie sprechen direkt und persönlich mit Ihrem Fahrer" },
+];
+
+const factIcons = ["+", "○", "✦", "□"];
+
 function Warum() {
   return (
-    <section className="bg-offwhite py-28 md:py-40">
-      <div className="mx-auto max-w-6xl px-6 md:px-10 grid md:grid-cols-2 gap-16 md:gap-24">
-        <FadeIn>
-          <p className="smallcaps text-muted-foreground mb-6">Warum Taxiizi</p>
-          <blockquote className="font-display text-3xl md:text-4xl lg:text-5xl leading-[1.2]">
-            „Kein Callcenter. Kein Zwischenhändler. Sie sprechen direkt mit Ihrem Fahrer."
-          </blockquote>
-        </FadeIn>
-        <FadeIn delay={150}>
-          <ul className="md:pt-16">
-            {facts.map((f) => (
-              <li key={f} className="border-t border-border py-5 text-lg last:border-b">
-                {f}
-              </li>
-            ))}
-          </ul>
-        </FadeIn>
+    <section className="relative bg-offwhite py-28 md:py-40 overflow-hidden">
+      {/* Diagonal yellow stripes bottom-left */}
+      <div className="absolute bottom-0 left-0 w-64 h-64 overflow-hidden pointer-events-none z-10">
+        <div className="absolute bg-accent/70 h-[3px] w-48" style={{ bottom: "72px", left: "-20px", transform: "rotate(35deg)" }} />
+        <div className="absolute bg-accent/50 h-[2px] w-36" style={{ bottom: "92px", left: "-10px", transform: "rotate(35deg)" }} />
+        <div className="absolute bg-accent/30 h-[2px] w-24" style={{ bottom: "110px", left: "0px", transform: "rotate(35deg)" }} />
+      </div>
+      {/* Diagonal yellow stripes bottom-right */}
+      <div className="absolute bottom-0 right-0 w-64 h-64 overflow-hidden pointer-events-none z-10">
+        <div className="absolute bg-accent/70 h-[3px] w-48" style={{ bottom: "72px", right: "-20px", transform: "rotate(-35deg)" }} />
+        <div className="absolute bg-accent/50 h-[2px] w-36" style={{ bottom: "92px", right: "-10px", transform: "rotate(-35deg)" }} />
+        <div className="absolute bg-accent/30 h-[2px] w-24" style={{ bottom: "110px", right: "0px", transform: "rotate(-35deg)" }} />
+      </div>
+      <div className="mx-auto max-w-6xl px-6 md:px-10">
+        <div className="grid lg:grid-cols-[180px_1fr] gap-10 lg:gap-16">
+
+          {/* Left column */}
+          <FadeIn className="flex flex-col">
+            <div className="mb-10 flex flex-col items-center">
+              <h2 className="font-display text-[5rem] leading-[0.88] mb-10 tracking-tight w-fit">
+                <div>Warum</div>
+                <div className="text-center">ich.</div>
+                <div className="flex justify-center mt-2">
+                  <svg width="170" height="14" viewBox="0 0 170 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0,7 C14,1 28,13 42,7 C56,1 70,13 85,7 C100,1 114,13 128,7 C142,1 156,13 170,7" stroke="#FBBF24" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+              </h2>
+              <ul className="space-y-4">
+                {facts.map((f, i) => (
+                  <li key={f} className="flex items-center gap-3 text-sm text-ink/80">
+                    <span className="text-accent text-base leading-none">{factIcons[i]}</span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="mt-auto pt-10">
+              <div className="flex items-center gap-0.5 mb-2">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <span key={i} className="text-accent text-sm">★</span>
+                ))}
+                <span className="ml-2 text-xs text-muted-foreground">5.0 / 5</span>
+              </div>
+              <p className="text-sm text-ink/65 leading-relaxed mb-2 italic">
+                „Pünktlich, freundlich, absolut empfehlenswert."
+              </p>
+              <p className="text-xs font-semibold">Michael K.</p>
+              <p className="text-xs text-muted-foreground">Kunde, München</p>
+            </div>
+          </FadeIn>
+
+          {/* Right column */}
+          <FadeIn delay={120} className="flex flex-col gap-10 pl-36 pt-20">
+            <blockquote className="font-display text-3xl md:text-4xl lg:text-[2.5rem] leading-[1.2]">
+              „Kein Callcenter. Kein Zwischenhändler. Sie sprechen direkt mit Ihrem Fahrer."
+            </blockquote>
+            <div className="grid grid-cols-3 gap-3">
+              {warumStats.map((s) => (
+                <div key={s.num} className="bg-background p-8 min-h-[320px] flex flex-col justify-between">
+                  <p className="font-display text-5xl md:text-6xl font-bold text-accent">{s.num}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+
+        </div>
       </div>
     </section>
   );
 }
 
+const einsatzgebiete = [
+  { label: "Markt Schwaben", suffix: "und Umgebung", img: imgMarktSchwaben },
+  { label: "Erding", suffix: "und Umgebung", img: imgErding },
+  { label: "München", suffix: "und Umgebung", img: imgMuenchen },
+  { label: "Langstrecken", suffix: "auf Anfrage", img: imgAutobahn, isAccent: true },
+];
+
 function Einsatzgebiete() {
   return (
-    <section id="einsatzgebiete" className="bg-background py-28 md:py-40">
-      <div className="mx-auto max-w-6xl px-6 md:px-10 grid md:grid-cols-2 gap-16 md:gap-24">
-        <FadeIn>
-          <p className="smallcaps text-muted-foreground mb-6">Einsatzgebiete</p>
-          <h2 className="font-display text-4xl md:text-6xl leading-[1.1]">Wir fahren für Sie.</h2>
-        </FadeIn>
-        <FadeIn delay={150}>
-          <ul className="md:pt-8 space-y-4">
-            {cities.map((c) => (
-              <li key={c} className="text-xl md:text-2xl text-muted-foreground">{c}</li>
-            ))}
-          </ul>
-          <p className="mt-10 smallcaps text-muted-foreground">Langstrecken auf Anfrage</p>
-        </FadeIn>
+    <section id="einsatzgebiete" className="relative overflow-hidden">
+      <div className="grid grid-cols-2 md:grid-cols-4">
+        {einsatzgebiete.map((a, i) => (
+          <FadeIn
+            key={a.label}
+            delay={i * 80}
+            className="relative group overflow-hidden h-[640px]"
+          >
+            <img
+              src={a.img}
+              alt={a.label}
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className={`absolute inset-0 bg-gradient-to-t ${a.isAccent ? "from-black/90 via-accent/5 to-black/25" : "from-black/85 via-black/20 to-transparent"}`} />
+            {/* Number */}
+            <span className="absolute top-6 right-6 font-display text-4xl font-bold text-accent/60 leading-none select-none">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            {/* Bottom accent line */}
+            <div className="absolute bottom-0 left-0 h-[2px] w-10 bg-accent transition-all duration-500 group-hover:w-full" />
+            {/* Text */}
+            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+              <p className="smallcaps text-accent/90 text-xs mb-2 tracking-widest">{a.suffix}</p>
+              <h3 className="font-display text-2xl md:text-3xl text-white leading-tight">{a.label}</h3>
+            </div>
+          </FadeIn>
+        ))}
       </div>
     </section>
   );
 }
 
 function Bewertungen() {
+  const [featured, ...rest] = reviews;
   return (
-    <section className="bg-ink text-white py-28 md:py-40">
-      <div className="mx-auto max-w-4xl px-6 md:px-10">
-        <FadeIn>
-          <p className="smallcaps text-white/50 mb-16 text-center">Bewertungen</p>
-        </FadeIn>
-        <div>
-          {reviews.map((r, i) => (
-            <FadeIn key={r.who} delay={i * 100}>
-              <div className={`py-14 md:py-20 ${i !== 0 ? "border-t border-accent/40" : ""}`}>
-                <p className="font-display italic text-2xl md:text-4xl leading-[1.35]">
-                  „{r.q}"
-                </p>
-                <p className="smallcaps text-white/50 mt-8">{r.who}</p>
+    <section className="relative bg-background text-ink overflow-hidden">
+      {/* Featured review – full width */}
+      <FadeIn>
+        <div className="border-b border-ink/10 px-6 md:px-20 py-20 md:py-32 relative">
+          <p className="smallcaps text-accent text-sm mb-10 tracking-widest">Bewertungen</p>
+          <div className="font-display text-[6rem] md:text-[10rem] leading-none text-accent/25 select-none absolute top-10 left-16 pointer-events-none">"</div>
+          <blockquote className="font-display text-3xl md:text-5xl lg:text-6xl leading-[1.15] max-w-4xl text-ink/90 italic">
+            {featured.q}
+          </blockquote>
+          <div className="mt-10 flex items-center gap-6">
+            <div>
+              <div className="flex gap-0.5 mb-1">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <span key={i} className="text-accent text-sm">★</span>
+                ))}
               </div>
-            </FadeIn>
-          ))}
+              <p className="text-sm text-ink/50 smallcaps">{featured.who}</p>
+            </div>
+            <div className="h-6 w-px bg-ink/20" />
+            <p className="text-xs text-ink/30 smallcaps">5.0 · Google</p>
+          </div>
         </div>
+      </FadeIn>
+
+      {/* Two smaller reviews side by side */}
+      <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-ink/10">
+        {rest.map((r, i) => (
+          <FadeIn key={r.who} delay={i * 120}>
+            <div className="px-6 md:px-14 py-14 md:py-20">
+              <div className="flex gap-0.5 mb-6">
+                {Array.from({ length: 5 }).map((_, j) => (
+                  <span key={j} className="text-accent text-xs">★</span>
+                ))}
+              </div>
+              <p className="text-ink/70 text-lg md:text-xl leading-relaxed italic mb-8">„{r.q}"</p>
+              <p className="text-sm text-ink/40 smallcaps">{r.who}</p>
+            </div>
+          </FadeIn>
+        ))}
       </div>
     </section>
   );
@@ -224,16 +369,16 @@ function Kontakt() {
           <p className="smallcaps text-muted-foreground mb-6">Kontakt</p>
           <h2 className="font-display text-4xl md:text-6xl leading-[1.1] mb-12">Bereit für Ihre Fahrt?</h2>
           <a
-            href="tel:+4915123456789"
+            href="tel:+4915739288899"
             className="block font-display font-semibold text-4xl md:text-6xl tracking-tight hover:text-accent transition-colors"
           >
-            +49 151 234 567 89
+            +49 1573 9288899
           </a>
           <a
-            href="https://wa.me/4915123456789"
+            href="https://wa.me/4915739288899"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-10 inline-block border border-ink px-8 py-3 smallcaps text-ink hover:bg-ink hover:text-white transition-colors"
+            className="mt-10 inline-block border-2 border-accent bg-accent/10 px-8 py-3 smallcaps text-ink hover:bg-accent transition-colors"
           >
             Per WhatsApp anfragen
           </a>

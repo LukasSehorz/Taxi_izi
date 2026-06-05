@@ -35,7 +35,11 @@ export function Navbar() {
           />
         </a>
 
-        <nav className="hidden md:flex items-center gap-10">
+        <nav
+          className={`hidden md:flex items-center gap-10 rounded-full px-8 py-3 transition-colors ${
+            scrolled ? "bg-ink/5" : "bg-black/40 backdrop-blur-sm"
+          }`}
+        >
           {links.map((l) => (
             <a
               key={l.href}

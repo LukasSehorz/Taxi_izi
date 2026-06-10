@@ -26,7 +26,7 @@ export function Navbar() {
       }`}
     >
       <div className="mx-auto max-w-7xl px-6 md:px-10 h-20 flex items-center justify-between">
-        <a href="#top" className="flex items-center ml-16">
+        <a href="#top" className="flex items-center md:ml-16">
           <img
             src={logoAsset}
             alt="Taxiizi"

@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Navbar } from "@/components/Navbar";
 import { FadeIn } from "@/components/FadeIn";
 import logoAsset from "@/assets/logo.png";
@@ -10,6 +10,11 @@ import imgSerien from "@/assets/service-serien.png";
 import imgVorbestell from "@/assets/service-vorbestell.png";
 import imgPersonen from "@/assets/service-personen.png";
 import imgKur from "@/assets/service-kur.png";
+import imgKurier from "@/assets/service-kurier.png";
+import imgMesse from "@/assets/service-messe.png";
+import imgLimoBMW from "@/assets/limo-bmw7.png";
+import imgLimoMercE from "@/assets/limo-merc-e.png";
+import imgLimoMercV from "@/assets/limo-merc-v.png";
 import imgMarktSchwaben from "@/assets/city-markt-schwaben.png";
 import imgErding from "@/assets/city-erding.png";
 import imgMuenchen from "@/assets/city-muenchen.png";
@@ -33,6 +38,8 @@ const services = [
   { title: "Vorbestellservice", desc: "Reservieren Sie Ihre Fahrt im Voraus – Ihr Wagen steht garantiert pünktlich zum vereinbarten Zeitpunkt bereit.", img: imgVorbestell },
   { title: "Personenfahrten", desc: "Bequeme Beförderung für Einzelpersonen oder Gruppen – diskret, sicher und in gepflegten Fahrzeugen.", img: imgPersonen },
   { title: "Kurfahrten", desc: "Komfortable Fahrten zu Kur- und Reha-Einrichtungen – entspannt und sicher ans Ziel, auch über längere Strecken.", img: imgKur },
+  { title: "Kurierfahrten", desc: "Schnelle und zuverlässige Lieferung von Paketen und Dokumenten – diskret, pünktlich und direkt von Tür zu Tür.", img: imgKurier },
+  { title: "Messefahrten", desc: "Komfortabler Transfer zu Messen und Veranstaltungen – pünktlich, entspannt und ohne Parkplatzstress.", img: imgMesse },
 ];
 
 const facts = ["Lizenzierter Taxibetrieb", "Festpreise auf Anfrage", "24 Stunden erreichbar", "Gepflegte Fahrzeuge"];
@@ -50,6 +57,7 @@ function Index() {
       <Navbar />
       <Hero />
       <Leistungen />
+      <LimousineService />
       <Warum />
       <Einsatzgebiete />
       <Bewertungen />
@@ -123,7 +131,7 @@ function Leistungen() {
         </FadeIn>
         <div className="grid grid-cols-3 gap-2">
           {services.map((s, i) => {
-            const wide = i === 0 || i === 3 || i === 5;
+            const wide = i === 0 || i === 3 || i === 4 || i === 7;
             return (
               <FadeIn key={s.title} delay={(i % 3) * 80} className={wide ? "col-span-2" : "col-span-1"}>
                 <div className="group relative overflow-hidden cursor-default" style={{ height: wide ? "420px" : "420px" }}>
@@ -149,6 +157,114 @@ function Leistungen() {
               </FadeIn>
             );
           })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const limoFleet = [
+  { img: imgLimoBMW,    name: "BMW 7er",           detail: "Baujahr 2020 · Schwarz" },
+  { img: imgLimoMercE,  name: "Mercedes E-Klasse",  detail: "Baujahr 2020 · Schwarz" },
+  { img: imgLimoMercV,  name: "Mercedes V-Klasse",  detail: "Baujahr 2020 · Schwarz" },
+];
+
+function LimousineService() {
+  const [active, setActive] = useState(0);
+  const count = limoFleet.length;
+
+  const prev = useCallback(() => setActive((a) => (a - 1 + count) % count), [count]);
+  const next = useCallback(() => setActive((a) => (a + 1) % count), [count]);
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight") next();
+      if (e.key === "ArrowLeft") prev();
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [next, prev]);
+
+  const getProps = (i: number) => {
+    const offset = (i - active + count) % count;
+    if (offset === 0) return { z: 30, x: "0%",   scale: 1,    brightness: 1,    opacity: 1 };
+    if (offset === 1) return { z: 20, x: "62%",  scale: 0.78, brightness: 0.45, opacity: 1 };
+    return              { z: 20, x: "-62%", scale: 0.78, brightness: 0.45, opacity: 1 };
+  };
+
+  return (
+    <section className="relative bg-ink text-white py-24 md:py-36 overflow-hidden">
+      {/* Diagonal stripes bottom-left */}
+      <div className="absolute bottom-0 left-0 w-64 h-64 overflow-hidden pointer-events-none">
+        <div className="absolute bg-accent/70 h-[3px] w-48" style={{ bottom: "72px", left: "-20px", transform: "rotate(-35deg)" }} />
+        <div className="absolute bg-accent/50 h-[2px] w-36" style={{ bottom: "92px", left: "-10px", transform: "rotate(-35deg)" }} />
+        <div className="absolute bg-accent/30 h-[2px] w-24" style={{ bottom: "110px", left: "0px", transform: "rotate(-35deg)" }} />
+      </div>
+      {/* Diagonal stripes bottom-right */}
+      <div className="absolute bottom-0 right-0 w-64 h-64 overflow-hidden pointer-events-none">
+        <div className="absolute bg-accent/70 h-[3px] w-48" style={{ bottom: "72px", right: "-20px", transform: "rotate(35deg)" }} />
+        <div className="absolute bg-accent/50 h-[2px] w-36" style={{ bottom: "92px", right: "-10px", transform: "rotate(35deg)" }} />
+        <div className="absolute bg-accent/30 h-[2px] w-24" style={{ bottom: "110px", right: "0px", transform: "rotate(35deg)" }} />
+      </div>
+
+      <div className="mx-auto max-w-6xl px-6 md:px-10">
+        <FadeIn>
+          <p className="smallcaps text-accent text-base mb-3">Fuhrpark</p>
+          <h2 className="font-display text-4xl md:text-5xl mb-4">Limousinen Service.</h2>
+          <p className="text-white/50 text-sm mb-16 max-w-md">Reisen Sie in höchstem Komfort – diskret, pünktlich und stilvoll.</p>
+        </FadeIn>
+
+        {/* Carousel */}
+        <div className="relative h-[340px] md:h-[420px] flex items-center justify-center">
+          {limoFleet.map((car, i) => {
+            const { z, x, scale, brightness, opacity } = getProps(i);
+            return (
+              <div
+                key={car.name}
+                onClick={() => setActive(i)}
+                className="absolute w-[75%] md:w-[65%] cursor-pointer"
+                style={{
+                  zIndex: z,
+                  transform: `translateX(${x}) scale(${scale})`,
+                  filter: `brightness(${brightness})`,
+                  opacity,
+                  transition: "all 0.5s cubic-bezier(0.4,0,0.2,1)",
+                }}
+              >
+                <div className="relative overflow-hidden aspect-video">
+                  <img src={car.img} alt={car.name} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  {i === active && (
+                    <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                      <div className="h-[2px] w-10 bg-accent mb-4" />
+                      <h3 className="font-display text-2xl md:text-3xl text-white">{car.name}</h3>
+                      <p className="text-sm text-white/50 mt-1 smallcaps">{car.detail}</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Controls */}
+        <div className="flex items-center justify-center gap-8 mt-10">
+          <button onClick={prev} aria-label="Zurück" className="w-12 h-12 border border-white/20 flex items-center justify-center text-white/60 hover:border-accent hover:text-accent transition-colors">
+            ←
+          </button>
+          <div className="flex gap-2">
+            {limoFleet.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActive(i)}
+                className="transition-all duration-300"
+                style={{ width: i === active ? "28px" : "8px", height: "3px", background: i === active ? "var(--color-accent)" : "rgba(255,255,255,0.2)" }}
+              />
+            ))}
+          </div>
+          <button onClick={next} aria-label="Weiter" className="w-12 h-12 border border-white/20 flex items-center justify-center text-white/60 hover:border-accent hover:text-accent transition-colors">
+            →
+          </button>
         </div>
       </div>
     </section>

@@ -13,8 +13,8 @@ import imgPersonen from "@/assets/service-personen.png";
 import imgKur from "@/assets/service-kur.png";
 import imgKurier from "@/assets/service-kurier.png";
 import imgMesse from "@/assets/service-messe.png";
-import imgLimoBMW from "@/assets/limo-bmw7.jpeg";
-import imgLimoMercE from "@/assets/limo-merc-e.jpeg";
+import imgLimoBMW from "@/assets/limo-bmw7.png";
+import imgLimoMercE from "@/assets/limo-merc-e.png";
 import imgLimoMercV from "@/assets/limo-merc-v.jpeg";
 import imgMarktSchwaben from "@/assets/city-markt-schwaben.png";
 import imgErding from "@/assets/city-erding.png";
@@ -485,9 +485,6 @@ function UeberMich() {
 }
 
 function Kontakt() {
-  const [form, setForm] = useState({ name: "", phone: "", message: "" });
-  const [sent, setSent] = useState(false);
-
   return (
     <section id="kontakt" className="bg-offwhite py-20 md:py-40">
       <div className="mx-auto max-w-2xl px-6 text-center">
@@ -516,58 +513,6 @@ function Kontakt() {
           </a>
         </FadeIn>
 
-        <FadeIn delay={150}>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              setSent(true);
-            }}
-            className="mt-20 text-left space-y-6"
-          >
-            <div>
-              <label className="smallcaps text-muted-foreground block mb-2">Name</label>
-              <input
-                required
-                maxLength={100}
-                value={form.name}
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
-                className="w-full border-b border-ink/30 bg-transparent py-3 focus:outline-none focus:border-accent"
-              />
-            </div>
-            <div>
-              <label className="smallcaps text-muted-foreground block mb-2">Telefon</label>
-              <input
-                required
-                maxLength={30}
-                value={form.phone}
-                onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                className="w-full border-b border-ink/30 bg-transparent py-3 focus:outline-none focus:border-accent"
-              />
-            </div>
-            <div>
-              <label className="smallcaps text-muted-foreground block mb-2">Nachricht</label>
-              <textarea
-                required
-                maxLength={1000}
-                rows={3}
-                value={form.message}
-                onChange={(e) => setForm({ ...form, message: e.target.value })}
-                className="w-full border-b border-ink/30 bg-transparent py-3 focus:outline-none focus:border-accent resize-none"
-              />
-            </div>
-            <button
-              type="submit"
-              className="bg-accent text-ink smallcaps px-10 py-4 hover:bg-ink hover:text-accent transition-colors"
-            >
-              {sent ? "Vielen Dank — wir melden uns" : "Anfrage senden"}
-            </button>
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              Mit dem Absenden des Formulars erklären Sie sich damit einverstanden, dass Ihre Angaben zur
-              Bearbeitung Ihrer Anfrage verarbeitet werden. Weitere Informationen finden Sie in unserer{" "}
-              <a href="/datenschutz" className="underline hover:text-accent">Datenschutzerklärung</a>.
-            </p>
-          </form>
-        </FadeIn>
       </div>
     </section>
   );

@@ -12,4 +12,9 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Force-enable nitro with the Netlify preset when building outside Lovable
+  // (e.g. self-deploy from GitHub). Without this, nitro is skipped and only
+  // static client assets are uploaded -> no SSR server -> 404 on every route.
+  // Outputs functions to .netlify/functions-internal and static assets to dist/.
+  nitro: { preset: "netlify" },
 });

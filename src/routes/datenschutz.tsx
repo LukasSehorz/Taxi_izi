@@ -43,6 +43,26 @@ function Datenschutz() {
 
       <LegalH2>3. Hosting und Server-Logfiles</LegalH2>
       <LegalP>
+        Diese Website wird bei Netlify gehostet. Anbieter ist die Netlify, Inc., 512 2nd Street,
+        Suite 200, San Francisco, CA 94107, USA (nachfolgend „Netlify"). Wenn Sie unsere Website
+        besuchen, erfasst Netlify verschiedene Logfiles inklusive Ihrer IP-Adresse. Die Verwendung
+        von Netlify erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO – wir haben ein
+        berechtigtes Interesse an einer möglichst zuverlässigen Darstellung unserer Website. Die
+        Datenübertragung in die USA wird auf den Angemessenheitsbeschluss der EU-Kommission zum
+        EU-US Data Privacy Framework gestützt; Netlify ist unter diesem Rahmenwerk zertifiziert.
+        Wir haben mit Netlify einen Vertrag über Auftragsverarbeitung (Art. 28 DSGVO) geschlossen.
+        Details entnehmen Sie der Datenschutzerklärung von Netlify:{" "}
+        <a
+          href="https://www.netlify.com/privacy/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline hover:text-accent"
+        >
+          https://www.netlify.com/privacy/
+        </a>
+        .
+      </LegalP>
+      <LegalP>
         Beim Aufruf unserer Website werden durch den Hosting-Anbieter automatisch Informationen in
         sogenannten Server-Logfiles gespeichert, die Ihr Browser automatisch übermittelt. Dies sind:
       </LegalP>
@@ -63,31 +83,22 @@ function Datenschutz() {
       </LegalP>
 
       <LegalH2>4. Kontaktaufnahme</LegalH2>
-      <LegalH3>Kontaktformular</LegalH3>
-      <LegalP>
-        Wenn Sie uns über das Kontaktformular eine Anfrage zukommen lassen, werden Ihre Angaben aus dem
-        Formular (Name, Telefonnummer, Nachricht) zwecks Bearbeitung der Anfrage und für den Fall von
-        Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
-      </LegalP>
-      <LegalP>
-        Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der
-        Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen
-        erforderlich ist (z. B. Anfrage einer Fahrt). In allen übrigen Fällen beruht die Verarbeitung auf
-        unserem berechtigten Interesse an der effektiven Bearbeitung der an uns gerichteten Anfragen
-        (Art. 6 Abs. 1 lit. f DSGVO).
-      </LegalP>
-      <LegalP>
-        Die von Ihnen im Kontaktformular eingegebenen Daten verbleiben bei uns, bis Sie uns zur Löschung
-        auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung
-        entfällt. Zwingende gesetzliche Bestimmungen – insbesondere Aufbewahrungsfristen – bleiben
-        unberührt.
-      </LegalP>
-
       <LegalH3>Kontakt per Telefon</LegalH3>
       <LegalP>
         Bei der Kontaktaufnahme per Telefon verarbeiten wir Ihre Telefonnummer sowie die im Gespräch
         mitgeteilten Daten (z. B. Name, Abholadresse, Fahrtziel) ausschließlich zur Durchführung und
         Organisation der angefragten Fahrt (Art. 6 Abs. 1 lit. b DSGVO).
+      </LegalP>
+
+      <LegalH3>Kontakt per E-Mail</LegalH3>
+      <LegalP>
+        Wenn Sie uns per E-Mail kontaktieren, werden Ihre Angaben (E-Mail-Adresse, Name sowie der
+        Inhalt Ihrer Nachricht) zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen
+        bei uns gespeichert. Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO,
+        sofern Ihre Anfrage mit der Anbahnung oder Durchführung einer Fahrt zusammenhängt, im Übrigen
+        auf Grundlage unseres berechtigten Interesses an der effektiven Bearbeitung der an uns
+        gerichteten Anfragen (Art. 6 Abs. 1 lit. f DSGVO). Diese Daten geben wir nicht ohne Ihre
+        Einwilligung weiter.
       </LegalP>
 
       <LegalH3>Kontakt per WhatsApp</LegalH3>
@@ -166,7 +177,7 @@ function Datenschutz() {
 
       <LegalH2>10. Aktualität dieser Datenschutzerklärung</LegalH2>
       <LegalP>
-        Diese Datenschutzerklärung ist aktuell gültig und hat den Stand Juni 2026. Durch die
+        Diese Datenschutzerklärung ist aktuell gültig und hat den Stand Juli 2026. Durch die
         Weiterentwicklung unserer Website oder aufgrund geänderter gesetzlicher bzw. behördlicher Vorgaben
         kann es notwendig werden, diese Datenschutzerklärung zu ändern.
       </LegalP>

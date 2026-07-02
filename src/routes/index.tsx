@@ -22,11 +22,73 @@ import imgMuenchen from "@/assets/city-muenchen.png";
 import imgAutobahn from "@/assets/city-autobahn.png";
 import izzetPortrait from "@/assets/izzet-portrait.png";
 
+const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://taxi-izi.de/#business",
+  name: "Taxiizi – Taxi und Limousine Service",
+  alternateName: "Taxiizi",
+  description:
+    "Taxi- und Limousinenservice in München, Erding und Markt Schwaben. Flughafentransfer, Krankenfahrten, Kurierfahrten und mehr – direkt beim Fahrer buchen, 24/7 erreichbar.",
+  url: "https://taxi-izi.de/",
+  telephone: "+4915739288899",
+  email: "taxi.izi@gmx.de",
+  image: "https://taxi-izi.de/og-image.jpg",
+  priceRange: "€€",
+  currenciesAccepted: "EUR",
+  founder: { "@type": "Person", name: "Izzet Tüymen" },
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Engelhardstr. 6",
+    postalCode: "81369",
+    addressLocality: "München",
+    addressRegion: "Bayern",
+    addressCountry: "DE",
+  },
+  areaServed: [
+    { "@type": "City", name: "München" },
+    { "@type": "City", name: "Erding" },
+    { "@type": "City", name: "Markt Schwaben" },
+    { "@type": "City", name: "Freising" },
+  ],
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    opens: "00:00",
+    closes: "23:59",
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Leistungen",
+    itemListElement: [
+      "Flughafentransfer",
+      "Krankenfahrten",
+      "Serienfahrten",
+      "Vorbestellservice",
+      "Personenfahrten",
+      "Kurfahrten",
+      "Kurierfahrten",
+      "Messefahrten",
+      "Limousinenservice",
+    ].map((name) => ({
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name },
+    })),
+  },
+};
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Taxiizi – Ihr Fahrer in München und Umgebung" },
-      { name: "description", content: "Taxi und Limousine Service in München. Direkt beim Fahrer, ohne Callcenter. Festpreise, 24/7 erreichbar." },
+      { title: "Taxi München, Erding & Markt Schwaben – Taxiizi | 24/7" },
+      { name: "description", content: "Taxi und Limousine Service in München, Erding und Markt Schwaben. Flughafentransfer, Krankenfahrten & mehr – direkt beim Fahrer, ohne Callcenter. Festpreise, 24/7." },
+    ],
+    links: [{ rel: "canonical", href: "https://taxi-izi.de/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(localBusinessJsonLd),
+      },
     ],
   }),
   component: Index,

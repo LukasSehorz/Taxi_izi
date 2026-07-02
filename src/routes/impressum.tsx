@@ -50,11 +50,6 @@ function Impressum() {
         Ruppertstraße 19, 80337 München
       </LegalP>
 
-      <LegalH2>Steuernummer</LegalH2>
-      <LegalP>
-        Steuernummer: 148/162/1420
-      </LegalP>
-
       <LegalH2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</LegalH2>
       <LegalP>
         Izzet Tüymen

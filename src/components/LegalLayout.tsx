@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import logoAsset from "@/assets/logo.png";
+import logoAsset from "@/assets/logo-optimized.png";
 
 export function LegalLayout({ label, title, children }: { label: string; title: string; children: ReactNode }) {
   return (

@@ -2,25 +2,25 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState, useEffect, useCallback } from "react";
 import { Navbar } from "@/components/Navbar";
 import { FadeIn } from "@/components/FadeIn";
-import logoAsset from "@/assets/logo.png";
-import heroAsset from "@/assets/hero-bg.png";
-import heroMobileAsset from "@/assets/hero-bg-mobile.png";
-import imgFlughafen from "@/assets/service-flughafen.png";
-import imgKranken from "@/assets/service-kranken.png";
-import imgSerien from "@/assets/service-serien.png";
-import imgVorbestell from "@/assets/service-vorbestell.png";
-import imgPersonen from "@/assets/service-personen.png";
-import imgKur from "@/assets/service-kur.png";
-import imgKurier from "@/assets/service-kurier.png";
-import imgMesse from "@/assets/service-messe.png";
-import imgLimoBMW from "@/assets/limo-bmw7.png";
-import imgLimoMercE from "@/assets/limo-merc-e.png";
-import imgLimoMercV from "@/assets/limo-merc-v.jpeg";
-import imgMarktSchwaben from "@/assets/city-markt-schwaben.png";
-import imgErding from "@/assets/city-erding.png";
-import imgMuenchen from "@/assets/city-muenchen.png";
-import imgAutobahn from "@/assets/city-autobahn.png";
-import izzetPortrait from "@/assets/izzet-portrait.png";
+import logoAsset from "@/assets/logo-optimized.png";
+import heroAsset from "@/assets/hero-bg.webp";
+import heroMobileAsset from "@/assets/hero-bg-mobile.webp";
+import imgFlughafen from "@/assets/service-flughafen.webp";
+import imgKranken from "@/assets/service-kranken.webp";
+import imgSerien from "@/assets/service-serien.webp";
+import imgVorbestell from "@/assets/service-vorbestell.webp";
+import imgPersonen from "@/assets/service-personen.webp";
+import imgKur from "@/assets/service-kur.webp";
+import imgKurier from "@/assets/service-kurier.webp";
+import imgMesse from "@/assets/service-messe.webp";
+import imgLimoBMW from "@/assets/limo-bmw7.webp";
+import imgLimoMercE from "@/assets/limo-merc-e.webp";
+import imgLimoMercV from "@/assets/limo-merc-v.webp";
+import imgMarktSchwaben from "@/assets/city-markt-schwaben.webp";
+import imgErding from "@/assets/city-erding.webp";
+import imgMuenchen from "@/assets/city-muenchen.webp";
+import imgAutobahn from "@/assets/city-autobahn.webp";
+import izzetPortrait from "@/assets/izzet-portrait.webp";
 
 const localBusinessJsonLd = {
   "@context": "https://schema.org",
@@ -137,11 +137,13 @@ function Hero() {
       <img
         src={heroAsset}
         alt="Taxi bei Nacht in der Stadt"
+        fetchPriority="high"
         className="absolute inset-0 h-full w-full object-cover hidden md:block"
       />
       <img
         src={heroMobileAsset}
         alt="Taxi bei Nacht in der Stadt"
+        fetchPriority="high"
         className="absolute inset-0 h-full w-full object-cover md:hidden"
       />
       <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
@@ -301,7 +303,7 @@ function LimousineService() {
                 }}
               >
                 <div className="relative overflow-hidden aspect-video">
-                  <img src={car.img} alt={car.name} className="w-full h-full object-cover" />
+                  <img src={car.img} alt={car.name} loading="lazy" className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   {i === active && (
                     <div className="absolute bottom-0 left-0 right-0 p-4 md:p-8">

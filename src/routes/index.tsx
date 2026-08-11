@@ -593,6 +593,9 @@ function Footer() {
           <span className="mx-3">·</span>
           <a href="/datenschutz" className="hover:text-accent">Datenschutz</a>
         </p>
+        <p className="text-xs text-white/60 text-center">
+          Teile der Inhalte dieser Website wurden mit Unterstützung von KI erstellt.
+        </p>
       </div>
     </footer>
   );

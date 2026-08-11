@@ -95,6 +95,12 @@ function Impressum() {
         außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen
         Autors bzw. Erstellers.
       </LegalP>
+
+      <LegalH2>Hinweis zu KI-generierten Inhalten</LegalH2>
+      <LegalP>
+        Teile der Inhalte dieser Website (Texte und Bilder) wurden mit Unterstützung von künstlicher
+        Intelligenz erstellt und redaktionell geprüft.
+      </LegalP>
     </LegalLayout>
   );
 }

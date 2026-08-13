@@ -12,6 +12,12 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import faviconUrl from "../assets/logo-optimized.png?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { CookieBanner } from "../components/CookieBanner";
+import {
+  CONSENT_BOOTSTRAP_SCRIPT,
+  GTM_NOSCRIPT_HTML,
+  GTM_SCRIPT,
+} from "../lib/consent";
 
 function NotFoundComponent() {
   return (
@@ -76,7 +82,6 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
-      { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Taxiizi – Taxi und Limousine Service in München" },
       { name: "description", content: "Zuverlässiger Taxi- und Limousinenservice in München, Erding und Markt Schwaben. Direkt beim Fahrer buchen – keine Vermittlung, faire Festpreise, 24/7 erreichbar." },
@@ -114,10 +119,20 @@ function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="de">
       <head>
+        <meta charSet="utf-8" />
+        {/* Google Consent Mode v2 – muss vor dem GTM-Loader laufen */}
+        <script dangerouslySetInnerHTML={{ __html: CONSENT_BOOTSTRAP_SCRIPT }} />
+        {/* Google Tag Manager */}
+        <script dangerouslySetInnerHTML={{ __html: GTM_SCRIPT }} />
+        {/* End Google Tag Manager */}
         <HeadContent />
       </head>
       <body>
+        {/* Google Tag Manager (noscript) */}
+        <noscript dangerouslySetInnerHTML={{ __html: GTM_NOSCRIPT_HTML }} />
+        {/* End Google Tag Manager (noscript) */}
         {children}
+        <CookieBanner />
         <Scripts />
       </body>
     </html>

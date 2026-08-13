@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import logoAsset from "@/assets/logo-optimized.png";
+import { openCookieSettings } from "@/lib/consent";
 
 export function LegalLayout({ label, title, children }: { label: string; title: string; children: ReactNode }) {
   return (
@@ -27,10 +28,18 @@ export function LegalLayout({ label, title, children }: { label: string; title: 
       <footer className="bg-ink text-white py-10">
         <div className="mx-auto max-w-3xl px-6 flex flex-col items-center gap-4">
           <p className="text-sm text-white/60">© 2026 Taxiizi – Taxi und Limousine Service</p>
-          <p className="smallcaps text-white/40">
+          <p className="smallcaps text-white/40 text-center">
             <a href="/impressum" className="hover:text-accent">Impressum</a>
             <span className="mx-3">·</span>
             <a href="/datenschutz" className="hover:text-accent">Datenschutz</a>
+            <span className="mx-3">·</span>
+            <button
+              type="button"
+              onClick={openCookieSettings}
+              className="smallcaps hover:text-accent transition-colors"
+            >
+              Cookie-Einstellungen
+            </button>
           </p>
           <p className="text-xs text-white/60 text-center">
             Teile der Inhalte dieser Website wurden mit Unterstützung von KI erstellt.

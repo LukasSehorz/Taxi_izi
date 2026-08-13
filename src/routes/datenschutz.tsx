@@ -126,18 +126,73 @@ function Datenschutz() {
       <LegalH2>5. Schriftarten (lokales Hosting)</LegalH2>
       <LegalP>
         Diese Website nutzt zur einheitlichen Darstellung von Schriftarten sogenannte Web Fonts
-        (Google Fonts), die lokal auf unserem Server installiert sind. Eine Verbindung zu Servern von
-        Google findet dabei nicht statt. Es werden keine Daten an Google übertragen.
+        (Google Fonts), die lokal auf unserem Server installiert sind. Beim Laden der Schriftarten
+        findet keine Verbindung zu Servern von Google statt; es werden hierbei keine Daten an Google
+        übertragen. Für den separat eingesetzten Google Tag Manager gilt Ziffer 7.
       </LegalP>
 
-      <LegalH2>6. Cookies und Tracking</LegalH2>
+      <LegalH2>6. Cookies und Einwilligung (Consent-Management)</LegalH2>
       <LegalP>
-        Diese Website verwendet keine Cookies zu Analyse-, Tracking- oder Marketingzwecken und setzt
-        keine Analyse-Tools (wie z. B. Google Analytics) ein. Aus diesem Grund wird kein Cookie-Banner
-        benötigt.
+        Unsere Website verwendet Cookies bzw. vergleichbare Technologien (z. B. den lokalen Speicher
+        Ihres Browsers). Technisch notwendige Cookies sind für den Betrieb der Website erforderlich
+        und werden auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO bzw. § 25 Abs. 2 TDDDG gespeichert.
+        Alle übrigen Cookies – insbesondere zu Statistik-, Analyse- und Marketingzwecken – werden erst
+        gesetzt, nachdem Sie über unseren Cookie-Banner ausdrücklich eingewilligt haben
+        (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG).
+      </LegalP>
+      <LegalP>
+        Ihre Einwilligungsentscheidung speichern wir im lokalen Speicher Ihres Browsers unter dem
+        Schlüssel „cookie_consent_v1“, damit der Banner Ihnen nicht bei jedem Besuch erneut angezeigt
+        wird. Diese Speicherung enthält keine personenbezogenen Daten, sondern lediglich Ihre Auswahl
+        sowie den Zeitpunkt der Einwilligung.
+      </LegalP>
+      <LegalP>
+        Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen oder ändern.
+        Klicken Sie dazu im Seitenfuß auf „Cookie-Einstellungen“. Bis zu Ihrer Einwilligung werden
+        keine Analyse- oder Marketing-Cookies gesetzt und keine entsprechenden Daten an Google
+        übermittelt.
       </LegalP>
 
-      <LegalH2>7. SSL- bzw. TLS-Verschlüsselung</LegalH2>
+      <LegalH2>7. Google Tag Manager und Google-Dienste</LegalH2>
+      <LegalP>
+        Wir setzen den Google Tag Manager ein. Anbieter ist die Google Ireland Limited, Gordon House,
+        Barrow Street, Dublin 4, Irland. Der Google Tag Manager ist ein Werkzeug, mit dem wir
+        Website-Tags (z. B. für Statistik oder Marketing) verwalten und einbinden können. Der Google
+        Tag Manager selbst erstellt keine Nutzerprofile, speichert keine Cookies mit
+        personenbezogenen Daten und führt keine eigenständige Analyse durch. Er dient ausschließlich
+        der Verwaltung und Auslösung der über ihn eingebundenen Dienste.
+      </LegalP>
+      <LegalP>
+        Beim Aufruf der Website wird das Skript des Google Tag Managers von einem Google-Server
+        geladen; dabei wird Ihre IP-Adresse an Google übertragen. Über den Google Tag Manager können
+        – ausschließlich nach Ihrer Einwilligung – weitere Google-Dienste (z. B. Google Analytics
+        oder Google Ads) geladen werden, die Cookies setzen und Nutzungsdaten verarbeiten.
+      </LegalP>
+      <LegalP>
+        Wir verwenden den sogenannten Google Consent Mode v2. Dabei werden Google-Dienste standardmäßig
+        so gesteuert, dass für Analyse und Marketing zunächst keine Einwilligung vorliegt
+        („denied“). Erst wenn Sie im Cookie-Banner zustimmen, wird der Einwilligungsstatus
+        entsprechend Ihrer Auswahl aktualisiert und die jeweiligen Dienste dürfen Cookies setzen.
+      </LegalP>
+      <LegalP>
+        Rechtsgrundlage für den Einsatz ist Ihre Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO sowie
+        § 25 Abs. 1 TDDDG. Eine Datenübermittlung in die USA kann nicht ausgeschlossen werden; sie
+        wird auf den Angemessenheitsbeschluss der EU-Kommission zum EU-US Data Privacy Framework
+        gestützt, unter dem Google LLC zertifiziert ist. Ergänzend hat Google die
+        Standardvertragsklauseln der EU-Kommission abgeschlossen. Weitere Informationen finden Sie in
+        den Nutzungsbedingungen des Google Tag Managers und in der Datenschutzerklärung von Google:{" "}
+        <a
+          href="https://policies.google.com/privacy?hl=de"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline hover:text-accent"
+        >
+          https://policies.google.com/privacy
+        </a>
+        .
+      </LegalP>
+
+      <LegalH2>8. SSL- bzw. TLS-Verschlüsselung</LegalH2>
       <LegalP>
         Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte,
         wie zum Beispiel Anfragen, die Sie an uns als Seitenbetreiber senden, eine SSL- bzw.
@@ -145,7 +200,7 @@ function Datenschutz() {
         Browsers von „http://" auf „https://" wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.
       </LegalP>
 
-      <LegalH2>8. Speicherdauer</LegalH2>
+      <LegalH2>9. Speicherdauer</LegalH2>
       <LegalP>
         Soweit innerhalb dieser Datenschutzerklärung keine speziellere Speicherdauer genannt wurde,
         verbleiben Ihre personenbezogenen Daten bei uns, bis der Zweck für die Datenverarbeitung entfällt.
@@ -155,7 +210,7 @@ function Datenschutz() {
         handelsrechtliche Aufbewahrungsfristen).
       </LegalP>
 
-      <LegalH2>9. Ihre Rechte</LegalH2>
+      <LegalH2>10. Ihre Rechte</LegalH2>
       <LegalP>Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit das Recht auf:</LegalP>
       <ul className="list-disc pl-6 text-ink/75 leading-relaxed mb-4 space-y-1">
         <li>Auskunft über Ihre bei uns gespeicherten personenbezogenen Daten (Art. 15 DSGVO)</li>
@@ -175,7 +230,7 @@ function Datenschutz() {
         Datenschutzaufsicht (BayLDA), Promenade 18, 91522 Ansbach.
       </LegalP>
 
-      <LegalH2>10. Aktualität dieser Datenschutzerklärung</LegalH2>
+      <LegalH2>11. Aktualität dieser Datenschutzerklärung</LegalH2>
       <LegalP>
         Diese Datenschutzerklärung ist aktuell gültig und hat den Stand Juli 2026. Durch die
         Weiterentwicklung unserer Website oder aufgrund geänderter gesetzlicher bzw. behördlicher Vorgaben

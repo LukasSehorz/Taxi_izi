@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState, useEffect, useCallback } from "react";
 import { Navbar } from "@/components/Navbar";
 import { FadeIn } from "@/components/FadeIn";
+import { openCookieSettings } from "@/lib/consent";
 import logoAsset from "@/assets/logo-optimized.png";
 import heroAsset from "@/assets/hero-bg.webp";
 import heroMobileAsset from "@/assets/hero-bg-mobile.webp";
@@ -588,10 +589,18 @@ function Footer() {
       <div className="mx-auto max-w-6xl px-6 flex flex-col items-center gap-6">
         <img src={logoAsset} alt="Taxiizi" className="h-10 w-auto" />
         <p className="text-sm text-white/60">© 2026 Taxiizi – Taxi und Limousine Service</p>
-        <p className="smallcaps text-white/40">
+        <p className="smallcaps text-white/40 text-center">
           <a href="/impressum" className="hover:text-accent">Impressum</a>
           <span className="mx-3">·</span>
           <a href="/datenschutz" className="hover:text-accent">Datenschutz</a>
+          <span className="mx-3">·</span>
+          <button
+            type="button"
+            onClick={openCookieSettings}
+            className="smallcaps hover:text-accent transition-colors"
+          >
+            Cookie-Einstellungen
+          </button>
         </p>
         <p className="text-xs text-white/60 text-center">
           Teile der Inhalte dieser Website wurden mit Unterstützung von KI erstellt.
